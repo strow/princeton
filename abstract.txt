@@ -1,0 +1,94 @@
+Twenty Years of Infrared Hyperspectral Satellite Measurements
+
+FINAL
+
+The AIRS hyperspectral sounder has recorded ~21B global measurements of the Earth's
+Planck emission that encodes atmospheric thermodynamics, clouds, and minor
+gas information via spectroscopy.  These provide a valuable resource for climate science. 
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+My 3 liner
+
+The AIRS hyperspectral sounder has recorded ~21B global measurements of the earth's
+emitted radiances, which are connected to the geophysical state (thermodynamic, clouds, 
+minor gases) by spectroscopy. We discuss the use of these data for climate monitoring.
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+Larrabee's 4 liner
+
+The AIRS hyperspectral sounder has recorded ~21B global measurements of the earth's Planck 
+emission that are highly sensitive to the thermodynamic state of the atmosphere, clouds, and 
+minor gases.  We discuss the use of these data for climate monitoring both in the radiance 
+and geophysical domains, which are connected via spectroscopy.
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+My 3 liner
+
+We discuss the contributions of the new hyperspectral nadir sounders to improving weather
+prediction, and to enabling a long term climate quality observational time series to monitor
+changes in surface and atmospheric temperature, and greenhouse gases and clouds.
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+The new generation of hyperspectral nadir sounders has ushered in a
+golden age of satellite observations of the Earth’s climate since the
+early 2000s. With twice daily global coverage, this era started with
+NASA's Atmospheric Infrared Sounder (AIRS) in 2002, followed by
+EUMETSAT's Infrared Atmospheric Sounding Interferometer (IASI) in 2007
+and NOAA's Cross Track Infrared Sounder (CrIS) in 2012. Follow on
+missions are planned for IASI and CrIS till the 2040s. Science impacts
+include the discovery of new source regions of atmospheric gravity
+waves, observations of global dust transport and longwave radiative
+forcing day and night, and smoke and fire detection. This talk will
+focus on the many contributions these instruments have made in both
+dramatically improving the accuracy of numerical weather forecasting,
+and monitoring multiple components of the climate system such as the
+increase of temperature, and greenhouse gases such as water vapor,
+carbon dioxide methane, nitrogen oxide and the CFCs. We will discuss
+analyzing the dramatic temperature and atmospheric composition trends
+using a new framework which uses gridded in space and time radiances,
+with comparisons against operational retrievals and weather and
+climate models. We will also report on extending this framework to
+develop a new Climate Hyperspectral Infrared Product (CHIRP) which
+will seamlessly combine the AIRS and CriS data into a 40+ year climate
+quality observational time series, as well as recent efforts to try to
+guarantee continuity of these essential measurements to monitor our
+planet’s climate.
+ 
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+While the early 21 st century has seen dramatic changes in climate, it
+has also been the golden age of satellite observations of the Earth’s
+climate. During this period, climate has been observed from space with
+revolutionary detail and, in particular, climate change has been
+monitored in unprecedented ways. Due to its high spectral resolution,
+hyperspectral infrared (IR) sounder observations from space are
+capable of measuring a multitude of components of the climate
+system. Since the launch in 2002 (as part of the Aqua mission) of the
+Atmospheric Infrared Sounder (AIRS), hyperspectral IR sounders have
+played a key role in weather and climate science by, among other
+contributions, helping to dramatically improve the accuracy of
+numerical weather prediction, leading to the discovery of new source
+regions of atmospheric gravity waves, and monitoring key trends in our
+climate such as the increase of temperature, water vapor and carbon
+dioxide. In this presentation, we will discuss some of the most
+significant aspects of the global climate in the 21 st century. We
+will focus on the dramatic trends that we have been witnessing, from
+changes in atmospheric composition – e.g., greenhouse gases and clouds
+– to the impact in terms of polar temperatures and extreme weather. At
+the end of the presentation, we will report on recent efforts to try
+to guarantee continuity of these essential measurements to monitor our
+planet’s climate.

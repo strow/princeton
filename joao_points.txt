@@ -1,0 +1,42 @@
+Larrabee and Sergio,
+
+Regarding the Princeton presentation, maybe we could iterate on what
+we think are the critical aspects that we should mention/discuss.
+
+Here are some suggestions for potential critical aspects to mention in
+the Princeton presentation (keep in mind that most of this community
+is not knowledgeable of almost any of this – we should not assume that
+they much about it):
+
+What are hyperspectral IR instruments/missions
+
+A bit of history (since the 1970s… or early)
+
+AIRS as a pioneer hyperspectral instrument
+
+The value of hyperspectral information to a variety of objectives: weather, climate, composition, applications
+
+The dramatic impact in NWP
+
+(AIRS started as weather mission and became a climate mission)
+
+Atmospheric physics (weather and climate) examples
+
+Composition examples
+
+IASI and CrIS
+
+The value of radiance observations for understanding climate and climate change
+
+Radiance stability and long term records
+
+How to use hyperspectral IR data to improve and evaluate climate models (some examples)
+
+The spectral OLR of Xianglei is interesting to  mention
+
+Showing your recent work on T and q trends and climate feedbacks would be good
+
+CHIRP
+
+Future and continuity
+….
