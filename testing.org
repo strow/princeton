@@ -1,0 +1,40 @@
+#+startup: beamer
+#+Options: toc:nil H:1
+#  +LaTeX_CLASS_OPTIONS: [10pt,t,aspectratio=169]
+#+LaTeX_CLASS_OPTIONS: [10pt,t]
+#+TITLE: \large Maximizing the Scientific Return from the AIRS 20-Year Record
+#+BEAMER_HEADER: \subtitle{\footnotesize{AIRS/Sounder Science Team Meeting: $20^{th}$ Anniversary}}
+#+BEAMER_HEADER: \date{\vspace{0.1in}\footnotesize{May 9, 2022 \vfill}}
+#+BEAMER_HEADER: \author{L. Larrabee Strow\inst{1} and Sergio DeSouza-Machado\inst{1}} 
+#+BEAMER_HEADER: \institute[UMBC]{\inst{1} UMBC Physics Dept.}
+#+BEAMER_HEADER: \input beamer_setup
+#+BEAMER_HEADER: \usetheme{metropolis}
+#+BEAMER_HEADER: \metroset{titleformat title=allcaps}
+#+BEAMER_HEADER: \renewcommand{\UrlFont}{\small\tt}
+#+BEAMER_HEADER: \renewcommand*{\UrlFont}{\footnotesize}
+#+BEAMER_HEADER: \tolerance=1000
+#   +BEAMER_HEADER: \setbeamersize{text margin left=0.5cm,text margin right=0.5cm}
+#   +BEAMER_HEADER: \geometry{paperwidth=170.67mm, paperheight=96mm}
+#  +BEAMER_HEADER: \geometry{paperwidth=500pt, paperheight=200pt}
+#  +BEAMER_HEADER: \setbeamertemplate{frame footer}{\scriptsize UMBC/ASL} 
+
+* a slide
+
+| AIRS                                    | 2002 - 202X?? | 1:30 orbit |
+|-----------------------------------------+---------------+------------|
+| CrIS                                    | 2012 - 204X?  | 1:30 orbit |
+| \small 1 SNPP-CrIS, 4 on JPSS           |               |            |
+|-----------------------------------------+---------------+------------|
+| IASI                                    | 2007 - 204X?  | 9:30 orbit |
+| \small 3 on METOP-A series              |               |            |
+| \small 3 on METOP-SG series (2024)      |               |            |
+| \small(IASI-1 CDR available on request) |               |            |
+|-----------------------------------------+---------------+------------|
+| CHIRP (AIRS+CrIS)                       | 2002 - 204X   | 1:30 orbit |
+| \small "Virtual" L1c for climate        |               |            |
+
+* a slide
+
+| #Channels | Spectral Resolution |
+|  2378 ||
+| 8461 | |
