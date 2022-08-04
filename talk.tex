@@ -160,6 +160,53 @@ CHIRP (AIRS+CrIS) & 2002 - 204X & 1:30 orbit\\
 \end{small}
 \end{frame}
 %---------------------------------------------------------------------------------------------
+\begin{frame}{Climate Feedback Estimation from Trend Retrievals}
+  \vspace{-0.2in}
+  \begin{columns}[T]
+    \begin{column}{0.5\columnwidth}
+      \begin{block}{\footnotesize \(\lambda\) WV}
+        \vspace{-0.15in}
+        \begin{center}
+          \includegraphics[width=0.85\linewidth]{Figslls/wv_lambda.pdf}
+        \end{center}
+      \end{block}
+    \end{column}
+
+
+    \begin{column}{0.5\columnwidth}
+      \begin{block}{\footnotesize \(\lambda\) Lapse Rate}
+        \vspace{-0.15in}
+        \begin{center}
+          \includegraphics[width=0.85\linewidth]{Figslls/lapse_lambda.pdf}
+        \end{center}
+      \end{block}
+    \end{column}
+  \end{columns}
+
+  \begin{columns}[T]
+    \begin{column}{0.5\columnwidth}
+      \vspace{-0.2in}
+      \begin{block}{\footnotesize $\lambda$ WV + Lapse Rate}
+        \vspace{-0.15in}
+        \begin{center}
+          \includegraphics[width=0.85\linewidth]{Figslls/wv_plus_lapse_lambda.pdf}
+        \end{center}
+      \end{block}
+    \end{column}
+
+    \begin{column}{0.5\columnwidth}
+      \begin{footnotesize}
+        \begin{itemize}
+        \item CMIP period ends 2014, others end in 2021
+        \item OLR differences computed from obs trends
+        \item Cannot use MERRA2 due to poor surface T trends
+        \item Hard to separate feedbacks, more work needed
+        \end{itemize}
+      \end{footnotesize}
+    \end{column}
+  \end{columns}
+\end{frame}
+%---------------------------------------------------------------------------------------------
 \begin{frame}{Science Uses of Hyperspectral IR}
 \begin{itemize}
   \item Weighting functions gives high vertical resolution atmospheric sounding information which captures 
@@ -597,43 +644,6 @@ UMBC uncertainties \textasciitilde{}0.01K/year (inter-annual variability)
 %\end{itemize}
 %\end{frame}
 %---------------------------------------------------------------------------------------------
-\begin{frame}{Climate Feedback Estimation from Trend Retrievals}
-\vspace{-0.15in}
-\small
-\begin{itemize}
-\item CMIP period ends 2014 compared to our 2002-2021 time period
-\item OLR differences directly from trends, no use of inter-annual variability for kernels
-\item UMBC results similar to ERA-5 (not shown).
-\item Cannot use MERRA2 surface T due to poor trends.
-\end{itemize}
-
-\vspace{-0.25in}
-\begin{columns}
-\begin{column}{0.5\columnwidth}
-\begin{block}{\(\lambda\) WV}
-\vspace{-0.1in}
-\begin{center}
-%\includegraphics[width=\linewidth]{../../CONFERENCES/SunClimate2022/Strow_JPL_Apr2022/jpl_min//Figs/Pdf/wvlamda2.pdf}
-\includegraphics[width=\linewidth]{SunClimate2022/wvlamda2.pdf}
-\end{center}
-\end{block}
-\end{column}
-
-
-\begin{column}{0.5\columnwidth}
-\begin{block}{\(\lambda\) Lapse Rate}
-\vspace{-0.1in}
-\begin{center}
-%\includegraphics[width=\linewidth]{../../CONFERENCES/SunClimate2022/Strow_JPL_Apr2022/jpl_min//Figs/Pdf/lapselamda2.pdf}
-\includegraphics[width=\linewidth]{SunClimate2022/lapselamda2.pdf}
-\end{center}
-\end{block}
-\end{column}
-\end{columns}
-
-\vspace{-0.05in}
-Note Positive lapse rate feedback in tropics for 2002-2022.
-\end{frame}
 %---------------------------------------------------------------------------------------------
 \begin{frame}{OLR Clear Sky Trends from AIRS (UMBC version)}
 \vspace{-0.1in}
