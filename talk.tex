@@ -24,11 +24,15 @@
 \renewcommand*{\UrlFont}{\footnotesize}
 \tolerance=1000
 \setlength{\leftmargini}{3pt}
+% \setbeamersize{
+%   text margin left=3mm,
+%   text margin right=3mm,
+% }
 %---------------------------------------------------------------------------------------------
 \author{S. Machado}
 \date{\today}
 \title{\large Twenty Years of Infrared Hyperspectral Satellite Measurements}
-\subtitle{\footnotesize{From Spectroscopy to Climate Workshop \newline Princeton Center for Theoretical Sciences}}
+\subtitle{\footnotesize{From Spectroscopy to Climate Workshop \\ \vspace{-0.07in} Princeton Center for Theoretical Sciences}}
 \date{\vspace{0.1in}\footnotesize{August 22-24,2022, Princeton NJ \vfill}}
 \author{Sergio DeSouza-Machado\inst{1}, Joao Teixeira\inst{2}, and L. Larrabee Strow\inst{1}}
 \institute{\inst{1}UMBC Physics Department \and \inst{2}NASA Jet Propulsion Laboratory}
@@ -53,7 +57,7 @@
   \end{itemize}
   \begin{itemize}
   \item Longterm trends and feedbacks from AIRS: Various Approaches
-  \item Long term radiance dataset for climate: CHIRP
+  \item Long term radiance dataset for climate: CHIRP (in Amazon Cloud)
   \end{itemize}
 \end{frame}
 %---------------------------------------------------------------------------------------------
@@ -121,6 +125,31 @@ CHIRP (AIRS+CrIS) & 2002 - 204X & 1:30 orbit\\
   \includegraphics[width=\linewidth,page={13}]{Matricardi_REVEX_2021.pdf}
 \end{frame}
 %---------------------------------------------------------------------------------------------
+\begin{frame}{Radiance Spectra and Trends: ``Clear'' Scenes (2\% of Obs)}
+\centering \includegraphics[width=0.7\linewidth]{Figslls/rad_trends_all_cm.png}
+\begin{small}
+\begin{itemize}
+\item Top: Simulated Earth avg. spectrum: 1 \wn spectral response
+\item Bottom: AIRS obs trends, 19 years in red.  Simulated trends from inversion of obs. trends to geophysical trends
+\item Water trend retrieval robust, but not in ``active'' FIR region for OLR
+\end{itemize}
+\end{small}
+\end{frame}
+%---------------------------------------------------------------------------------------------
+\begin{frame}{BT Spectra and Trends: ``Clear'' Scenes (2\% of Obs)}
+\vspace{-0.03in}
+\centering \includegraphics[width=0.7\linewidth]{Figslls/bt_trends_all_cm.png}
+\vspace{-0.05in}
+\begin{small}
+\begin{itemize}
+\item Same as previous slide but in BT units.
+\item AIRS etc. covers same altitudes that control far-IR emission
+\item Highlights water vapor feedback, lowering emission to space
+\item Note: Tropospheric warming close to surface temperature warming  
+\end{itemize}
+\end{small}
+\end{frame}
+%---------------------------------------------------------------------------------------------
 \begin{frame}{Science Uses of Hyperspectral IR}
 \begin{itemize}
   \item Weighting functions gives high vertical resolution atmospheric sounding information which captures 
@@ -172,67 +201,6 @@ CHIRP (AIRS+CrIS) & 2002 - 204X & 1:30 orbit\\
 \end{columns}
 
 \end{block}
-\end{frame}
-%---------------------------------------------------------------------------------------------
-\begin{frame}{Radiance Spectra and rates (synthetic and observed)}
-
-\vspace{-0.1in}
-\begin{columns}
-
-\begin{column}{0.55\columnwidth}
-\begin{center}
-\includegraphics[width=0.9\linewidth]{NEWFIGS/kcarta_0_3000__radtrends.png}
-\end{center}
-6 average profiles : Tropical Ocean/Land, MidLat Ocean/Land, Polar Ocean/Land (from ERA5) \newline
-\small{\emph{Flux under AIRS/full curve $\sim$ 148, 257 W/m2, Ratio $\sim$ 0.58 \newline
-\textcolor{red}{$\Delta$ OLR  $\sim$ 0.028 W/m2/yr} : FIR = 0.007, 15um = -0.013, window = 0.034 W/m2/yr}}
-\end{column}
-%% see /home/sergio/MATLABCODE/oem_pkg_run/AIRS_gridded_STM_May2021_trendsonlyCLR/make_plot_PCTS.m
-%% ratio of OLR(650:3000) : OLR(0:3000) =   0.5774
-%% OLR = 257.6719 deltaOLR = 0.028512 W/m2
-%% deltaOLR all = 0.028512 W/m2  0<f<550 = 0.007441 550<f<800 = -0.012995 f>800 = 0.034066
-
-
-\begin{column}{0.55\columnwidth}
-\begin{itemize}
-  \item \textcolor{red}{Notice the overlay of observed vs computed radiance trends!}
-  \item Cos wgt Mean surf temp, $\Delta$ surf temp = 287 K,0.022 K/yr
-  \item 640 -2780 \wn : hyperspectral sounder channels
-  \item 792 \wn : 792 \cd Q branch (2.2ppmv $\rightarrow$ 0.06 K/year)
-  \item 1305 \wn : \methane (5 ppb/yr)
-  \item 1000 \wn : O3
-  \item AIRS see UT and some LS WV, so can ``account'' for changes seen by FIR instruments
-  \item No clouds in these simulations
-\end{itemize}
-\end{column}
-\end{columns}
-\end{frame}
-%---------------------------------------------------------------------------------------------
-\begin{frame}{BT Spectra and rates (synthetic and observed)}
-
-\vspace{-0.1in}
-\begin{columns}
-
-\begin{column}{0.55\columnwidth}
-\begin{center}
-\includegraphics[width=0.9\linewidth]{NEWFIGS/kcarta_0_3000__bttrends.png}
-\end{center}
-6 average profiles : Tropical Ocean/Land, MidLat Ocean/Land, Polar Ocean/Land (from ERA5)
-\end{column}
-
-\begin{column}{0.55\columnwidth}
-\begin{itemize}
-  \item \textcolor{red}{Notice the overlay of observed vs computed BT trends!}
-  \item Cos wgt Mean surf temp, $\Delta$ surf temp = 287 K,0.022 K/yr
-  \item 640 -2780 \wn : hyperspectral sounder channels
-  \item 792 \wn : 792 \cd Q branch (2.2ppmv $\rightarrow$ 0.06 K/year)
-  \item 1305 \wn : \methane (5 ppb/yr)
-  \item 1000 \wn : O3
-  \item AIRS see UT and some LS WV, so can ``account'' for changes seen by FIR instruments
-  \item No clouds in these simulations
-\end{itemize}
-\end{column}
-\end{columns}
 \end{frame}
 %---------------------------------------------------------------------------------------------
 \begin{frame}[shrink=2]{Radiative Transfer codes : Accuracy vs Speed}
