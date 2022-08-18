@@ -77,6 +77,141 @@
   \end{itemize}
 \end{frame}
 
+%------------------------------------------------------------------------
+
+\begin{frame}[shrink=2]{Spectroscopy}
+\vspace{-0.1in}
+
+\begin{itemize}
+  \item HITRAN line parameter released every 4 years
+  \item H2020 : self consistent changes to O3 line intensities (MW to UV) $\Delta BT(K) \sim 0.5K$ at 10 um
+  \item Uncertainty estimates : $\delta(BT) \sim$ 0.2 K at TOA  
+  \item Line mixing models; speed dependent Voigt line shapes used in other spectral regions
+  \item AER : \textcolor{red}{new WV continuum in Fall 2022 (TIR region); H2020 \cd/\methane linemixing}
+  \item GEISA database (France) is very similar to HITRAN
+  %\item NLTE mostly affects the 4.3 um \cd band (nadir sounding)
+  %\item Manuel Lopez Puertas (Granada, Spain) has developed models upper atmosphere NLTE vibrational temperatures
+  %\item UMBC developed a fast model using this database
+  %\item We don't worry too much about strat/meso temperatures and atmospheric concentrations (cannot see with nadir sounders)
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Impact of Spectral Uncertainties ($\Delta$ (BT) at TOA)}
+
+\begin{columns}
+\begin{column}{0.55\columnwidth}
+%\begin{block}{Perturbations}
+wavenumber, pressure line shift unc \newline
+GEISA vs HITRAN  
+%\end{block}
+\end{column}
+
+\begin{column}{0.55\columnwidth}
+\vspace{0.25in} $\le$ 0.1 K RMS differences
+\end{column}
+\end{columns}
+
+%%%%%%
+
+\vspace{0.25in}
+\begin{columns}
+\begin{column}{0.55\columnwidth}
+\begin{block}{Spectroscopic Database}
+LBLTMv12.8 15 \um \cd line mixing versus \newline
+LBLRTM 12.4 (red) UMBCLBL (blue) \newline
+\textcolor{red}{Integral over wavenumber would give similar fluxes}
+\end{block}
+\end{column}
+
+\begin{column}{0.55\columnwidth}
+\begin{figure}
+\begin{center}
+%\includegraphics[width=0.45\textwidth]{../../SUBMITPAPERS/PAPER1_KCARTA/GEISA_HTRAN/hitran_geisaV2.pdf}
+%\includegraphics[width=1.005\textwidth]{../../SUBMITPAPERS/PAPER1_KCARTA/GEISA_HTRAN/co2_linemix_flavorsV2.pdf}
+\includegraphics[width=1.005\textwidth]{NEWFIGS/co2_linemix_flavorsV2.pdf}
+\end{center}
+\end{figure}
+\end{column}
+\end{columns}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[shrink=2]{Radiative Transfer codes}
+
+\emph{Line by line codes : accuracy}
+\vspace{-0.1in}
+\begin{itemize}
+  \item Latest HITRAN databases; accurate; too slow for operational use
+  \item LBLRTM (AER) MT-CKD continum, \cd/\methane line mixing, MW $\rightarrow$ UV
+  \item \textcolor{red}{kCARTA (UMBC)} \emph{HITRAN (2020), MT-CKD 3.2,\cd/\methane linemixing from LBLRTM, 
+        605-2830 \wn at 0.0025 \wn resolution (25 sec), 15-44000 \wn (5 min), jacobians, 
+        fluxes, scattering}
+\end{itemize}
+
+\emph{Fast Models : speed}
+\vspace{-0.1in}
+\begin{itemize}
+  \item Parametrized fast codes for clear sky cloud clearing retrievals
+  \item \textcolor{red}{SARTA (UMBC)} \emph{used by NASA and NOAA for operational L2 retrievals of AIRS, CrIS, IASI}
+  \item PCRTM (NASA Langley)
+  \item RTTOVS (ECMWF) Data Assimilation
+  \item Sigma IASI (U. of Basilicata, Italy) 
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{frame}[shrink=2]{Clouds and Aerosols}
+
+\begin{itemize}
+  \item Dust (4um), water (20 um), ice (20-100 um) affects TIR
+  \item DISORT (Stamnes et. al. 1988) : Very accurate, but slow
+  \item Parameterization for LongWave Scattering (Chou et. al 1999) : Very fast, about 2 K errors
+  %\item Successive Orders of Scattering : mostly used for NIR/Vis (to my knowledge)
+  \item PCLSAM fix (Tang. et. al 2018) : Needs more work
+  \item Complex cloud models (Maximum Random Overlap) give smooth heating profiles, multiple sub pixels are computationally costly
+  \item Simple cloud models (TwoSlab) are fast and quite accurate, spikes at cloud slab boundaries
+%  \item RRTM (AER) has in-built fast RTA for flux calculations, handles scattering, 3-4 gaussian angles
+%  \item ecRad (Robin Hogan, ECMWF) developed flux model for ECWMF
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[shrink=2]{Operational Retrievals}
+\vspace{-0.11in}
+
+\emph{Typical Hyperspectral Sounder}
+\vspace{-0.1in}
+\begin{itemize}
+  \item About 2000+ channels, resolution about 0.5-2 cm-1, 15 km diameter footprint
+  \item 1.30 am/pm equator crossing time, twice daily views of Earth, 16 day repeat cycle
+  \item 90 xtrack x 135 atrack spectra every 6 minutes
+  \item Roughly \textcolor{red}{2.92 million  allsky spectra daily x 20 years!}
+\end{itemize}
+
+\vspace{0.10in}
+
+\emph{Operational Retrievals : Cloud Clearing}
+\vspace{-0.1in}
+\begin{itemize}
+  \item reduces spatial resolution from 15 km to 3x3 or 45 km
+  \item ``increases'' spectral noise, and hence retrieval uncertainty
+  \item fails when scenes are uniform eg MBL, dust, clear
+  \item \textcolor{red}{T(z), WV(z), surface temp, trace gases, clouds, emissivity}
+  \item AIRS v7 : neural network first guess, 2 sec/FOR, Lots of QA, 
+  \item NOAA CLIMCAPS MERRA2 first guess, simpler QA, 0.7 sec/FOR
+  \item Single Footprint? Artificial Intelligence?
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 %---------------------------------------------------------------------------------------------
 % % ---------------------------------------------------------------------------------------------
 % \begin{frame}
