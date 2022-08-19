@@ -49,14 +49,15 @@
     \item AIRS, IASI, CrIS, etc
     \item Major uses of these sounders
     \end{itemize}
-  \item Spectroscopy for infrared sounders
+  \item Spectroscopy/Radiative Transfer/Retrieval Basics
     \begin{itemize}
     \item Radiative transfer: hierarchy of models
-    \item Clouds ...
+    \item Clouds (scattering)
+    \item AIRS L2 products
     \end{itemize}
   \end{itemize}
   \begin{itemize}
-  \item Longterm trends and feedbacks from AIRS: Various Approaches
+  \item Long term trends and feedbacks from AIRS: Various Approaches
   \item Long term radiance dataset for climate: CHIRP (in Amazon Cloud)
   \end{itemize}
 \end{frame}
@@ -72,10 +73,92 @@
     \item Non-standard products: cloud PDFs, fires, etc.
     \item Trends and anomalies
     \end{itemize}
-    \item How to handle practical issues: data access, RTAs, etc.
+%    \item How to handle practical issues: data access, RTAs, etc.
   \end{itemize}
 \end{frame}
 %---------------------------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+% I need to put in CHIRP, get rid of CrIS-Hamming
+\begin{frame}
+\frametitle{BT(K) Spectra for IR Sounders}  
+\begin{center}
+\vspace{-0.1in}
+\includegraphics[width=0.75\linewidth]{SunClimate2022/hyperall_hamming.pdf}
+\end{center}
+\vspace{-0.1in}
+\small Major gases: \cd, \water, \ozone, \methane, \nitrous \\
+\small Minor gases: CO, CFCs, SO$_2$, NH$_3$, PAN, and many others (+dust) \\
+\small Note: AIRS, CrIS: 1:30 orbit, IASI 9:30 orbit
+\end{frame}
+%---------------------------------------------------------------------------------------------
+\begin{frame}
+\frametitle{Measured Radiances and Trends for Clear Scenes}
+\centering \includegraphics[width=0.7\linewidth]{Figslls/rad_trends_all_cm.png}
+\begin{small}
+\begin{itemize}
+\item Top: Simulated Earth avg. spectrum: 1 \wn spectral response
+\item Bottom: 19-year linear trend.  Red obs inverted and then used to compute blue curve.  Used hottest 2\% per 16 days in 3x5 grid.
+\item Water trend retrieval robust, but not in ``active'' FIR region for OLR
+\end{itemize}
+\end{small}
+\end{frame}
+%---------------------------------------------------------------------------------------------
+\begin{frame}
+\frametitle{Measured BT Spectra and Trends for Clear Scenes}  
+\vspace{-0.03in}
+\centering \includegraphics[width=0.7\linewidth]{Figslls/bt_trends_all_cm.png}
+\vspace{-0.05in}
+\begin{small}
+\begin{itemize}
+\item Same as previous slide but in BT units.
+\item AIRS etc. covers same altitudes that control far-IR emission
+\item Highlights water vapor feedback, lowering emission to space
+\item Note: Tropospheric warming close to surface temperature warming  
+\end{itemize}
+\end{small}
+\end{frame}
+%---------------------------------------------------------------------------------------------
+\begin{frame}
+  \frametitle{Upwelling Radiance Example}
+\vspace{-0.05in}
+  \centering \includegraphics[width=0.625\linewidth]{Figslls/mono1460.pdf}
+\vspace{-0.05in}
+\begin{small}
+\begin{itemize}
+  \item Line centers 
+     \begin{itemize}
+        \item have stratospheric contributions \vspace{-0.03in}
+        \item A further zoom will show a dip from the mesosphere at line centers!
+        \item SRF convolution $\rightarrow$ broad weighting function
+    \end{itemize}
+  \item \textcolor{red}{Best sounding channels are in-between lines $\rightarrow$ narrow weighting function} (pressure$^2$ dependence)
+  \end{itemize}
+\end{small}
+\end{frame}
+% ---------------------------------------------------------------------------------------------
+\begin{frame}
+  \frametitle{Radiative Transfer Models}
+  \begin{itemize}
+  \item Inversion of radiance spectra requires accurate ``fast'' models
+  \item These are trained on monochromatic models (LBLRTM, kCARTA)
+  \item AIRS/CrIS RTAs:  SARTA (UMBC), PCRTM (NASA/Langley), CRTM (NOAA), OSS (AER), RTTOV(ECMWF)
+  \item NWP oriented models often don't have all minor gases
+  \end{itemize}
+  \begin{block}{Simple Radiative Transfer (Clear)}
+    \centering \includegraphics[width=0.55\linewidth]{Figslls/simple_rta.pdf}
+   \begin{small}
+    \begin{itemize}
+    \item $\tau_{\nu}$ extremely complicated and contains the spectroscopy
+    \item Spectral lineshapes (and continua) dominate uncertainties
+    \item Example: recent work (Hartmann) highighted importance of N$_2$-\water emission for
+      sounding
+    \item We include clouds using simple two-slab model (1 ice, 1 liquid cloud)      
+    \end{itemize}
+ \end{small}
+  \end{block}
+\end{frame}
+%------------------------------------------------------------------------
 
 \begin{frame}[shrink=2]{Spectroscopy}
 \vspace{-0.1in}
@@ -89,7 +172,7 @@
   \item Uncertainty estimates : $\delta(BT) \le$ 0.1-0.2 K at TOA  
   \begin{itemize}    
     \item NWP removes spectroscopy errors by comparing calcs to sondes etc
-    \item AIRSv7 removes errors by brute force
+    \item AIRSv7 removes errors by one time bias correction
     \item We looked at anomaly retrievals and choose subsets of pristine channels
   \end{itemize}
   %\item NLTE mostly affects the 4.3 um \cd band (nadir sounding)
@@ -173,7 +256,7 @@
   \item PCLSAM fix (Tang. et. al 2018) : Needs more work
   \item Complex cloud models (Maximum Random Overlap) give smooth heating profiles, multiple sub pixels are computationally costly
   \item Simple cloud models (TwoSlab) are fast and quite accurate, spikes at cloud slab boundaries
-  \item Brian Kahn (JPL) does lots of good work retrieving ice clouds using AIRS data
+  \item Brian Kahn (JPL) : retrieves (ice) clouds using AIRS data
 %  \item RRTM (AER) has in-built fast RTA for flux calculations, handles scattering, 3-4 gaussian angles
 %  \item ecRad (Robin Hogan, ECMWF) developed flux model for ECWMF
 \end{itemize}
@@ -208,83 +291,6 @@
   \item Single Footprint? Artificial Intelligence?
 \end{itemize}
 
-\end{frame}
-
-%------------------------------------------------------------------------
-% I need to put in CHIRP, get rid of CrIS-Hamming
-\begin{frame}
-\frametitle{BT(K) Spectra for IR Sounders}  
-\begin{center}
-\vspace{-0.1in}
-\includegraphics[width=0.75\linewidth]{SunClimate2022/hyperall_hamming.pdf}
-\end{center}
-\vspace{-0.1in}
-\small Major gases: \cd, \water, \ozone, \methane, \nitrous \\
-\small Minor gases: CO, CFCs, SO$_2$, NH$_3$, PAN, and many others (+dust) \\
-\small Note: AIRS, CrIS: 1:30 orbit, IASI 9:30 orbit
-\end{frame}
-%---------------------------------------------------------------------------------------------
-\begin{frame}
-\frametitle{Measured Radiances and Trends for Clear Scenes}
-\centering \includegraphics[width=0.7\linewidth]{Figslls/rad_trends_all_cm.png}
-\begin{small}
-\begin{itemize}
-\item Top: Simulated Earth avg. spectrum: 1 \wn spectral response
-\item Bottom: 19-year linear trend.  Red obs inverted and then used to compute blue curve.  Used hottest 2\% per 16 days in 3x5 grid.
-\item Water trend retrieval robust, but not in ``active'' FIR region for OLR
-\end{itemize}
-\end{small}
-\end{frame}
-%---------------------------------------------------------------------------------------------
-\begin{frame}
-\frametitle{Measured BT Spectra and Trends for Clear Scenes}  
-\vspace{-0.03in}
-\centering \includegraphics[width=0.7\linewidth]{Figslls/bt_trends_all_cm.png}
-\vspace{-0.05in}
-\begin{small}
-\begin{itemize}
-\item Same as previous slide but in BT units.
-\item AIRS etc. covers same altitudes that control far-IR emission
-\item Highlights water vapor feedback, lowering emission to space
-\item Note: Tropospheric warming close to surface temperature warming  
-\end{itemize}
-\end{small}
-\end{frame}
-%---------------------------------------------------------------------------------------------
-\begin{frame}
-  \frametitle{Upwelling Radiance Example}
-\vspace{-0.05in}
-  \centering \includegraphics[width=0.75\linewidth]{Figslls/mono1460.pdf}
-\vspace{-0.05in}
-\begin{small}
-\begin{itemize}
-  \item Line centers have stratospheric contributions \vspace{-0.03in}
-  \item A further zoom will show a dip from the mesosphere at line centers!
-  \item \textcolor{red}{Best sounding channels are in-between lines} (pressure$^2$ dependence \vspace{-0.03in})
-  \end{itemize}
-\end{small}
-\end{frame}
-% ---------------------------------------------------------------------------------------------
-\begin{frame}
-  \frametitle{Radiative Transfer Models}
-  \begin{itemize}
-  \item Inversion of radiance spectra requires accurate ``fast'' models
-  \item These are trained on monochromatic models (LBLRTM, kCARTA)
-  \item AIRS/CrIS RTAs:  SARTA (UMBC), PCRTM (NASA/Langley), CRTM (NOAA), OSS (AER), RTTOV(ECMWF)
-  \item NWP oriented models often don't have all minor gases
-  \end{itemize}
-  \begin{block}{Simple Radiative Transfer (Clear)}
-    \centering \includegraphics[width=0.55\linewidth]{Figslls/simple_rta.pdf}
-   \begin{small}
-    \begin{itemize}
-    \item $\tau_{\nu}$ extremely complicated and contains the spectroscopy
-    \item Spectral lineshapes (and continua) dominate uncertainties
-    \item Example: recent work (Hartmann) highighted importance of N$_2$-\water emission for
-      sounding
-    \item We include clouds using simple two-slab model (1 ice, 1 liquid cloud)      
-    \end{itemize}
- \end{small}
-  \end{block}
 \end{frame}
 %---------------------------------------------------------------------------------------------
 \begin{frame}
@@ -619,24 +625,41 @@ UMBC uncertainties \textasciitilde{}0.01K/year (inter-annual variability)
 \frametitle{Surface Temperature Trend Comparisons 2002/09-2014/08}  
 \vspace{-0.15in}
 \begin{center}
-\includegraphics[width=\linewidth]{Figs2002_2014/stemp_trends_2002_2014_amip6.png}
+\includegraphics[width=0.9\linewidth]{Figs2002_2014/stemp_trends_2002_2014_amip6.png}
 \end{center}
+
+\footnotesize
+GISS trends very similar to eg ERA5, MERRA2
+
 \end{frame}
 %---------------------------------------------------------------------------------------------
 \begin{frame}
 \frametitle{Zonal T(z) Trends 2002/09-2014/08}  
 \vspace{-0.15in}
 \begin{center}
-\includegraphics[width=\linewidth]{Figs2002_2014/tz_trends_2002_2014.pdf}
+\includegraphics[width=0.8\linewidth]{Figs2002_2014/tz_trends_2002_2014.pdf}
 \end{center}
+
+\footnotesize
+IR has null space near tropopause.  But trends correctly change sign there.\\
+\vspace{0.1in}
+UMBC uncertainties \textasciitilde{}0.01K/year (inter-annual variability)
+
 \end{frame}
 %---------------------------------------------------------------------------------------------
 \begin{frame}
 \frametitle{WV(z) Fractional Trends 2002/09-2014/08}  
 \vspace{-0.15in}
 \begin{center}
-\includegraphics[width=\linewidth]{Figs2002_2014/wvfrac_trends_2002_2014.pdf}
+\includegraphics[width=0.8\linewidth]{Figs2002_2014/wvfrac_trends_2002_2014.pdf}
 \end{center}
+
+\small
+\begin{itemize}
+\item UMBC a-priori of zero influencing upper-trop WV
+\item We have ``filled in'' UT/LS using MLS trends a-priori
+\end{itemize}
+
 \end{frame}
 
 %---------------------------------------------------------------------------------------------
@@ -644,8 +667,15 @@ UMBC uncertainties \textasciitilde{}0.01K/year (inter-annual variability)
 \frametitle{RH(z) Trends 2002/09-2014/08}  
 \vspace{-0.15in}
 \begin{center}
-\includegraphics[width=\textwidth]{Figs2002_2014/RHz_trends_2002_2014.pdf}
+\includegraphics[width=0.8\textwidth]{Figs2002_2014/RHz_trends_2002_2014.pdf}
 \end{center}
+
+\small
+\begin{itemize}
+\item MLS water vapor unimportant for OLR applications
+\item Mean global \(\Delta\) RH < 0.01\%/year
+\end{itemize}
+
 \end{frame}
 %---------------------------------------------------------------------------------------------
 
@@ -841,6 +871,28 @@ Left Panel: Zonal cloud radiative forcing (CRF) PDF yearly means, Right Panel: C
 Example of \emph{very} quick processing of AIRS full mission data looking for hot anomalies.   Easily extended to heat events, etc.  
 \end{frame}
 %---------------------------------------------------------------------------------------------
+
+\begin{frame}
+\frametitle{\textcolor{red}{CHIRP} = Climate Hyperspectral Infrared Product}
+\small Climate quality radiance time series record (2002-2040+)
+
+\begin{itemize}
+  \item AIRS, CrIS have similar NeDT, spatial sampling, orbits, band spans, stability \textcolor{red}{but SRFs are different}
+  \item Can ``invert'' convolved AIRS and CriS radiances back to monochromatic
+  \item And then re-convolve to a common wavenumber grid, after accounting for radiometric offsets (look at SNOs)
+  \item 1679 channels x 12150 observations/granule (6 minutes)
+  \item Can use one RTA to do 40 years of retrievals etc
+  \item Lose some spectral resolution $\rightarrow$ difficulty with trace gases \textcolor{red}{but should be fine for T,WV,surf temp}
+\end{itemize}
+
+\tiny Strow, L. L., Hepplewhite, C., Motteler, H., Buczkowski, S., and DeSouza-Machado, S. (2021). A
+Climate Hyperspectral Infrared Radiance Product (CHIRP) Combining the AIRS and CrIS Satellite
+Sounding Record. Remote Sensing, 13(3), 418. https://doi.org/10.3390/rs13030418
+
+https://docserver.gesdisc.eosdis.nasa.gov/public/project/Sounder/README.CHIRP.L1.V2.pdf
+
+\end{frame}
+
 \begin{frame}
 \frametitle{Summary and Future}  
 \begin{itemize}
