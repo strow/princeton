@@ -46,7 +46,7 @@
   \begin{itemize}
   \item Hyperspectral infrared satellite sounders (since 2002)
     \begin{itemize}
-    \item AIRS, IASI, CrIS, etc
+    \item Atmospheric Infrared Sounder (AIRS), Infrared Atmospheric Sounding Interferometer (IASI), CrossTrack Infrared Sounder (CrIS)
     \item Major uses of these sounders
     \end{itemize}
   \item Spectroscopy/Radiative Transfer/Retrieval Basics
@@ -65,7 +65,8 @@
 \begin{frame}
   \frametitle{Possible Take-Homes}
   \begin{itemize}
-  \item Future research with these sensor concentrating on processes and climate
+  \item High Quality Instrument dataset available for climate studies
+  \item Future research with these sensor datasets concentrating on processes and climate
   \item Direct use of radiances by the climate community:
     \begin{itemize}
     \item Retain accuracy and traceability of results to the raw data
@@ -94,55 +95,57 @@
 %---------------------------------------------------------------------------------------------
 \begin{frame}
 \frametitle{Measured Radiances and Trends for Clear Scenes}
-\centering \includegraphics[width=0.7\linewidth]{Figslls/rad_trends_all_cm.png}
+\centering \includegraphics[width=0.6\linewidth]{Figslls/rad_trends_all_cm.png}
 \begin{small}
 \begin{itemize}
 \item Top: Simulated Earth avg. spectrum: 1 \wn spectral response
 \item Bottom: 19-year linear trend.  Red obs inverted and then used to compute blue curve.  Used hottest 2\% per 16 days in 3x5 grid.
-\item Water trend retrieval robust, but not in ``active'' FIR region for OLR
-\end{itemize}
-\end{small}
-\end{frame}
-%---------------------------------------------------------------------------------------------
-\begin{frame}
-\frametitle{Measured BT Spectra and Trends for Clear Scenes}  
-\vspace{-0.03in}
-\centering \includegraphics[width=0.7\linewidth]{Figslls/bt_trends_all_cm.png}
-\vspace{-0.05in}
-\begin{small}
-\begin{itemize}
-\item Same as previous slide but in BT units.
-\item AIRS etc. covers same altitudes that control far-IR emission
+\item Water trend retrieval robust, covers same altitudes as emission in ``active'' FIR region
 \item Highlights water vapor feedback, lowering emission to space
-\item Note: Tropospheric warming close to surface temperature warming  
+\item \textcolor{red}{Best sounding channels are in-between lines $\rightarrow$ narrow weighting function} (pressure$^2$ dependence)
+%%\item Note: Tropospheric warming close to surface temperature warming  
 \end{itemize}
 \end{small}
 \end{frame}
 %---------------------------------------------------------------------------------------------
-\begin{frame}
-  \frametitle{Upwelling Radiance Example}
-\vspace{-0.05in}
-  \centering \includegraphics[width=0.625\linewidth]{Figslls/mono1460.pdf}
-\vspace{-0.05in}
-\begin{small}
-\begin{itemize}
-  \item Line centers 
-     \begin{itemize}
-        \item have stratospheric contributions \vspace{-0.03in}
-        \item A further zoom will show a dip from the mesosphere at line centers!
-        \item SRF convolution $\rightarrow$ broad weighting function
-    \end{itemize}
-  \item \textcolor{red}{Best sounding channels are in-between lines $\rightarrow$ narrow weighting function} (pressure$^2$ dependence)
-  \end{itemize}
-\end{small}
-\end{frame}
-% ---------------------------------------------------------------------------------------------
+%x%x% \begin{frame}
+%x%x% \frametitle{Measured BT Spectra and Trends for Clear Scenes}  
+%x%x% \vspace{-0.03in}
+%x%x% \centering \includegraphics[width=0.7\linewidth]{Figslls/bt_trends_all_cm.png}
+%x%x% \vspace{-0.05in}
+%x%x% \begin{small}
+%x%x% \begin{itemize}
+%x%x% \item Same as previous slide but in BT units.
+%x%x% \item AIRS etc. covers same altitudes that control far-IR emission
+%x%x% \item Highlights water vapor feedback, lowering emission to space
+%x%x% \item Note: Tropospheric warming close to surface temperature warming  
+%x%x% \end{itemize}
+%x%x% \end{small}
+%x%x% \end{frame}
+%---------------------------------------------------------------------------------------------
+%x%x% \begin{frame}
+%x%x%   \frametitle{Upwelling Radiance Example}
+%x%x% \vspace{-0.05in}
+%x%x%   \centering \includegraphics[width=0.625\linewidth]{Figslls/mono1460.pdf}
+%x%x% \vspace{-0.05in}
+%x%x% \begin{small}
+%x%x% \begin{itemize}
+%x%x%   \item Line centers 
+%x%x%      \begin{itemize}
+%x%x%         \item have stratospheric contributions \vspace{-0.03in}
+%x%x%         \item A further zoom will show a dip from the mesosphere at line centers!
+%x%x%         \item SRF convolution $\rightarrow$ broad weighting function
+%x%x%     \end{itemize}
+%x%x%   \item \textcolor{red}{Best sounding channels are in-between lines $\rightarrow$ narrow weighting function} (pressure$^2$ dependence)
+%x%x%   \end{itemize}
+%x%x% \end{small}
+%x%x% \end{frame}
+%x%x% % ---------------------------------------------------------------------------------------------
 \begin{frame}
   \frametitle{Radiative Transfer Models}
   \begin{itemize}
-  \item Inversion of radiance spectra requires accurate ``fast'' models
-  \item These are trained on monochromatic models (LBLRTM, kCARTA)
-  \item AIRS/CrIS RTAs:  SARTA (UMBC), PCRTM (NASA/Langley), CRTM (NOAA), OSS (AER), RTTOV(ECMWF)
+  \item Monochromatic models (LBLRTM, kCARTA) are accurate but slow
+  \item Used to train accurate ``fast'' models for inversions of millions of spectra/day
   \item NWP oriented models often don't have all minor gases
   \end{itemize}
   \begin{block}{Simple Radiative Transfer (Clear)}
@@ -151,154 +154,47 @@
     \begin{itemize}
     \item $\tau_{\nu}$ extremely complicated and contains the spectroscopy
     \item Spectral lineshapes (and continua) dominate uncertainties
-    \item Example: recent work (Hartmann) highighted importance of N$_2$-\water emission for
-      sounding
-    \item We include clouds using simple two-slab model (1 ice, 1 liquid cloud)      
+    \item Fast Models : need to model this using SRFs; broad weighting functions on top of lines, narrower weighting functions in between lines
     \end{itemize}
  \end{small}
   \end{block}
 \end{frame}
 %------------------------------------------------------------------------
 
-\begin{frame}[shrink=2]{Spectroscopy}
+\begin{frame}{Use of Radiative Transfer Models}
 \vspace{-0.1in}
 
 \begin{itemize}
   \item HITRAN line parameter database released every 4 years
-  \item H2020 : self consistent changes to O3 line intensities (MW to UV) %$\Delta BT(K) \sim 0.5K$ at 10 um
-  \item Line mixing models; speed dependent Voigt line shapes used in other spectral regions
-  \item AER : \textcolor{red}{new WV continuum in Fall 2022 (TIR region); H2020 \cd/\methane linemixing}
-  \item GEISA database (France) is very similar to HITRAN
   \item Uncertainty estimates : $\delta(BT) \le$ 0.1-0.2 K at TOA  
-  \begin{itemize}    
-    \item NWP removes spectroscopy errors by comparing calcs to sondes etc
-    \item AIRSv7 removes errors by one time bias correction
-    \item We looked at anomaly retrievals and choose subsets of pristine channels
+  \item Use accurate lineshapes eg line mixing in the models
+  \item $\ge 4 um$ particles (ice/water/dust) $\rightarrow$ Scattering is important
+  \item \emph{Current Operational Retrievals} use cloud clearing
+    \begin{itemize}
+    \item reduces spatial resolution from 15 km to 3 $\times$ 3 or 45 km
+    \item ``increases'' spectral noise, and hence retrieval uncertainty
+    \item fails when scenes are uniform eg MBL, dust, clear
+    \item \textcolor{gray}{AIRS v7 : neural network first guess, 2 sec/FOR, Lots of QA}
+    \item NOAA CLIMCAPS MERRA2 first guess, simpler QA, 0.7 sec/FOR
+    \item Not Optimal Estimation based (error propagation is more difficult)
+    \item \textcolor{red}{T(z), WV(z), surface temp, trace gases, clouds, emissivity}
+    \item \textcolor{red}{Difficult to estimate uncertainties; first guess comes through}
   \end{itemize}
-  %\item NLTE mostly affects the 4.3 um \cd band (nadir sounding)
-  %\item Manuel Lopez Puertas (Granada, Spain) has developed models upper atmosphere NLTE vibrational temperatures
-  %\item UMBC developed a fast model using this database
-  %\item We don't worry too much about strat/meso temperatures and atmospheric concentrations (cannot see with nadir sounders)
+  \item \emph{Future Retrievals?}
+    \begin{itemize}
+    \item Progress in Fast, accurate scattering RTAs/cloud models (MRO) 
+    \item \textcolor{blue}{We use a two-slab RO model (1 ice, 1 liquid cloud)}
+    \item Single Footprint? Artificial Intelligence?
+  \end{itemize}
 \end{itemize}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\begin{frame}{Impact of Spectral Uncertainties ($\Delta$ (BT) at TOA)}
-%\begin{columns}
-%\begin{column}{0.55\columnwidth}
-%%\begin{block}{Perturbations}
-%wavenumber, pressure line shift unc \newline
-%GEISA vs HITRAN  
-%%\end{block}
-%\end{column}
-%\begin{column}{0.55\columnwidth}
-%\vspace{0.25in} $\le$ 0.1 K RMS differences
-%\end{column}
-%\end{columns}
-
-%\vspace{0.25in}
-%\begin{columns}
-%\begin{column}{0.55\columnwidth}
-%\begin{block}{Spectroscopic Database}
-%LBLTMv12.8 15 \um \cd line mixing versus \newline
-%LBLRTM 12.4 (red) UMBCLBL (blue) \newline
-%\textcolor{red}{Integral over wavenumber would give similar fluxes}
-%\end{block}
-%\end{column}
-
-%\begin{column}{0.55\columnwidth}
-%\begin{figure}
-%\begin{center}
-%%\includegraphics[width=0.45\textwidth]{../../SUBMITPAPERS/PAPER1_KCARTA/GEISA_HTRAN/hitran_geisaV2.pdf}
-%%\includegraphics[width=1.005\textwidth]{../../SUBMITPAPERS/PAPER1_KCARTA/GEISA_HTRAN/co2_linemix_flavorsV2.pdf}
-%\includegraphics[width=1.005\textwidth]{NEWFIGS/co2_linemix_flavorsV2.pdf}
-%\end{center}
-%\end{figure}
-%\end{column}
-%\end{columns}
-%\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{frame}[shrink=2]{Radiative Transfer codes}
-
-\emph{Line by line codes : accuracy}
-\vspace{-0.1in}
-\begin{itemize}
-  \item Latest HITRAN databases; accurate; too slow for operational use
-  \item LBLRTM (AER) MT-CKD continum, \cd/\methane line mixing, MW $\rightarrow$ UV
-  \item \textcolor{red}{kCARTA (UMBC)} \emph{HITRAN (2020), MT-CKD 3.2,\cd/\methane linemixing from LBLRTM, 
-        605-2830 \wn at 0.0025 \wn resolution (25 sec), 15-44000 \wn (5 min), jacobians, 
-        fluxes, scattering}
-\end{itemize}
-
-\emph{Fast Models : speed}
-\vspace{-0.1in}
-\begin{itemize}
-  \item Parametrized fast codes for clear sky cloud clearing retrievals
-  \item \textcolor{red}{SARTA (UMBC)} \emph{used by NASA and NOAA for operational L2 retrievals of AIRS, CrIS, IASI}
-  \item PCRTM (NASA Langley)
-  \item RTTOVS (ECMWF) Data Assimilation
-  \item Sigma IASI (U. of Basilicata, Italy) 
-\end{itemize}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-\begin{frame}[shrink=2]{Clouds and Aerosols}
-
-\begin{itemize}
-  \item Dust (4um), water (20 um), ice (20-200 um) affects TIR
-  \item DISORT (Stamnes et. al. 1988) : Very accurate, but slow
-  \item Parameterization for Cloud LongWave Scattering (Chou et. al 1999) : Very fast, about 2 K errors
-  %\item Successive Orders of Scattering : mostly used for NIR/Vis (to my knowledge)
-  \item PCLSAM fix (Tang. et. al 2018) : Needs more work
-  \item Complex cloud models (Maximum Random Overlap) give smooth heating profiles, multiple sub pixels are computationally costly
-  \item Simple cloud models (TwoSlab) are fast and quite accurate, spikes at cloud slab boundaries
-  \item Brian Kahn (JPL) : retrieves (ice) clouds using AIRS data
-%  \item RRTM (AER) has in-built fast RTA for flux calculations, handles scattering, 3-4 gaussian angles
-%  \item ecRad (Robin Hogan, ECMWF) developed flux model for ECWMF
-\end{itemize}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{frame}[shrink=2]{Operational Retrievals}
-\vspace{-0.11in}
-
-\emph{Typical Hyperspectral Sounder}
-\vspace{-0.1in}
-\begin{itemize}
-  \item 2000+ channels, $\delta \nu \sim$ 0.5-2 cm-1, 15 km diameter footprint
-  \item 1.30 am/pm equator crossing time, $\times$ 2 daily Earth views, 16 day repeat cycle
-  \item 90 xtrack $\times$ 135 atrack spectra every 6 minutes
-  \item Roughly \textcolor{red}{2.92 million  allsky spectra daily $\times$ 20 years!}
-\end{itemize}
-
-\vspace{0.10in}
-
-\emph{Operational Retrievals : Cloud Clearing}
-\vspace{-0.1in}
-\begin{itemize}
-  \item reduces spatial resolution from 15 km to 3 $\times$ 3 or 45 km
-  \item ``increases'' spectral noise, and hence retrieval uncertainty
-  \item fails when scenes are uniform eg MBL, dust, clear
-  \item AIRS v7 : neural network first guess, 2 sec/FOR, Lots of QA
-  \item NOAA CLIMCAPS MERRA2 first guess, simpler QA, 0.7 sec/FOR
-  \item \textcolor{red}{T(z), WV(z), surface temp, trace gases, clouds, emissivity}
-  \item \textcolor{red}{Difficult to etimate uncertainties; first guess comes through}
-  \item Single Footprint? Artificial Intelligence?
-\end{itemize}
-
 \end{frame}
 %---------------------------------------------------------------------------------------------
 \begin{frame}
-  \frametitle{NWP Forecast Impact: \small (From Marcos Matricardi, ECMWF)}
+  \frametitle{NWP Forecast Impact: \small (From Marco Matricardi, ECMWF)}
   \vspace{-0.1in}
   \begin{small}
   \begin{itemize}
-  \item Sensor exist primarily for NWP applications.  Very clostly.
+  \item Sensors exist primarily for NWP applications.  Very costly (\$1 billion+)!!!!
   \item They ingest radiances (small subset of channels) for data assimilation
   \item Dynamic bias correction (via sondes, GNSS RO?) removes instrument, RTA, \textit{and} variable CO$_2$ before assimilation.
 \end{itemize}
@@ -309,6 +205,7 @@
 %---------------------------------------------------------------------------------------------
 \begin{frame}
 \frametitle{Climate Model Evaluation}  
+%% AIRS sounder has most sensitivity to mid tropospheric WV
 \vspace{-0.35in}
 \begin{center}
 \includegraphics[width=1.01\linewidth,page={10}]{Slides_to_Sergio.pdf}
@@ -369,12 +266,13 @@
 \frametitle{Our Approach for Climate-Level Measurements}  
 \vspace{-0.1in}
 \begin{itemize}
-\item Driven by Level 2 + Time \(\neq\) Climate.  A-priori for Level 2 problematic.
+\item Driven by Level 2 + Time \(\neq\) Climate.  
+\item A-priori for Level 2 problematic (will see it in the trends!!!!).
 \item Full sampling not required for climate
 \item Manipulate data in radiance space "as long as possible" before retrievals
 \item Reduce sensitivity to calibration and RTA bias \textbf{radiance anomalies}
-\item Optimal estimation retrievals regularized more by smoothing than a-priori
-\item Develop analysis approaches that encourage \emph{more researchers} to use radiances, rather than complicated Level 2 products for climate research, with quick turnaround.
+\item Optimal estimation retrievals %% regularized more by smoothing than a-priori
+\item Develop analysis approaches to encourage \emph{more researchers to use radiances}, rather than complicated Level 2 products for climate research, with quick turnaround.
 \end{itemize}
 
 \textbf{With this approach results can be achieved in hours, not years!}   \\
@@ -411,18 +309,22 @@
 
 \begin{itemize}
 \item Our simple approach shows far less variability in Night-Day surface T trends than AIRS V7
-\item Probably due to cloud-clearing issues, see V7 Tsurf anomaly (cloud clearing can produce cold artifacts)
+\item 0-40 N (land) shows night time warming?
+\item V7 Tsurf anomaly (cloud clearing can produce cold artifacts); UMBC agrees with ERA5
 \end{itemize}
 \end{frame}
 %---------------------------------------------------------------------------------------------
 \begin{frame}
   \frametitle{Metrics for Evaluating New Climate-Level Approaches}
   \begin{itemize}
-  \item Dataset intercomparisons easiest if look at linear component of trends
-  \item Not primarily concerned here with uncertainty due to inter-annual+ variability, instead dataset intercomparisons
-  \item Time series of anomalies is our goal, trends provide a metric for intercomparisons
+  \item Primarily interested in Dataset inter-comparisons 
+  \item Easiest when looking at linear component of trends
+  \item Not primarily concerned here with uncertainty due to inter-annual+ variability
+  \item Time series of anomalies is our goal :  trends provide a metric for intercomparisons
   \item Generally use zero a-priori in retrievals
-  \item Later introduce possible cloud measurements that do not require retrievals
+  \item Well understood Optimal Estimation $\rightarrow$ uncertainty analysis
+  \item Use kCARTA LBL code to generate accurate jacobians at all layers
+  \item Later introduce cloud measurements that do not require retrievals
   \end{itemize}
 \end{frame}
 %---------------------------------------------------------------------------------------------
@@ -433,6 +335,11 @@
 \item Will this sampling provide accurate profile trends?
 \item Careful sampling of cloudier scenes does not preclude retrievals, just more care in cloud parameter a-priori values and parameterization
 \item Subsequent results used 3\% surface T sampling (from 1231 \wn channel)
+\item Better clear-sky sampling
+  \begin{itemize}
+    \item use co-located imager data
+    \item but we do agree with cloud cleared radiances as it is (trends)!
+  \end{itemize}
 
 \vspace{0.1in}
 \end{itemize}
@@ -472,9 +379,11 @@ Resampling (say for fixed cloud forcing) takes \textasciitilde{}2 days.
 \small
 \begin{itemize}
 \item "Clear" 3\% hot sampling trends almost same as all-sky
+\item So clouds changing regionally, but globally not much change!
 \item Zonally averaged uncertainties (inter-annual variability) \textasciitilde{}0.05K/Decade
 \item Good AIRS channels: stability \textasciitilde{}0.02K/Decade
 \item Shortwave has known drifts (higher for cold scenes)
+\item Can see 2002-2014 hiatus, 2015 ENSO, 2016-2021 warming
 \end{itemize}
 \end{frame}
 %---------------------------------------------------------------------------------------------
@@ -621,34 +530,34 @@ UMBC uncertainties \textasciitilde{}0.01K/year (inter-annual variability)
 %\end{itemize}
 %\end{frame}
 %---------------------------------------------------------------------------------------------
+%x%x% \begin{frame}
+%x%x% \frametitle{Surface Temperature Trend Comparisons 2002/09-2014/08}  
+%x%x% \vspace{-0.15in}
+%x%x% \begin{center}
+%x%x% \includegraphics[width=0.9\linewidth]{Figs2002_2014/stemp_trends_2002_2014_amip6.png}
+%x%x% \end{center}
+%x%x% 
+%x%x% \footnotesize
+%x%x% GISS trends very similar to eg ERA5, MERRA2
+%x%x% 
+%x%x% \end{frame}
+%x%x% %---------------------------------------------------------------------------------------------
+%x%x% \begin{frame}
+%x%x% \frametitle{Zonal T(z) Trends 2002/09-2014/08}  
+%x%x% \vspace{-0.15in}
+%x%x% \begin{center}
+%x%x% \includegraphics[width=0.8\linewidth]{Figs2002_2014/tz_trends_2002_2014.pdf}
+%x%x% \end{center}
+%x%x% 
+%x%x% \footnotesize
+%x%x% IR has null space near tropopause.  But trends correctly change sign there.\\
+%x%x% \vspace{0.1in}
+%x%x% UMBC uncertainties \textasciitilde{}0.01K/year (inter-annual variability)
+%x%x% 
+%x%x% \end{frame}
+%x%x% %---------------------------------------------------------------------------------------------
 \begin{frame}
-\frametitle{Surface Temperature Trend Comparisons 2002/09-2014/08}  
-\vspace{-0.15in}
-\begin{center}
-\includegraphics[width=0.9\linewidth]{Figs2002_2014/stemp_trends_2002_2014_amip6.png}
-\end{center}
-
-\footnotesize
-GISS trends very similar to eg ERA5, MERRA2
-
-\end{frame}
-%---------------------------------------------------------------------------------------------
-\begin{frame}
-\frametitle{Zonal T(z) Trends 2002/09-2014/08}  
-\vspace{-0.15in}
-\begin{center}
-\includegraphics[width=0.8\linewidth]{Figs2002_2014/tz_trends_2002_2014.pdf}
-\end{center}
-
-\footnotesize
-IR has null space near tropopause.  But trends correctly change sign there.\\
-\vspace{0.1in}
-UMBC uncertainties \textasciitilde{}0.01K/year (inter-annual variability)
-
-\end{frame}
-%---------------------------------------------------------------------------------------------
-\begin{frame}
-\frametitle{WV(z) Fractional Trends 2002/09-2014/08}  
+\frametitle{\textcolor{red}{WV(z) Fractional Trends 2002/09-2014/08}}  
 \vspace{-0.15in}
 \begin{center}
 \includegraphics[width=0.8\linewidth]{Figs2002_2014/wvfrac_trends_2002_2014.pdf}
@@ -656,28 +565,27 @@ UMBC uncertainties \textasciitilde{}0.01K/year (inter-annual variability)
 
 \small
 \begin{itemize}
-\item UMBC a-priori of zero influencing upper-trop WV
-\item We have ``filled in'' UT/LS using MLS trends a-priori
+\item \textcolor{red}{Took about a day to do this!}
 \end{itemize}
 
 \end{frame}
 
-%---------------------------------------------------------------------------------------------
-\begin{frame}
-\frametitle{RH(z) Trends 2002/09-2014/08}  
-\vspace{-0.15in}
-\begin{center}
-\includegraphics[width=0.8\textwidth]{Figs2002_2014/RHz_trends_2002_2014.pdf}
-\end{center}
-
-\small
-\begin{itemize}
-\item MLS water vapor unimportant for OLR applications
-\item Mean global \(\Delta\) RH < 0.01\%/year
-\end{itemize}
-
-\end{frame}
-%---------------------------------------------------------------------------------------------
+%x%x% %---------------------------------------------------------------------------------------------
+%x%x% \begin{frame}
+%x%x% \frametitle{RH(z) Trends 2002/09-2014/08}  
+%x%x% \vspace{-0.15in}
+%x%x% \begin{center}
+%x%x% \includegraphics[width=0.8\textwidth]{Figs2002_2014/RHz_trends_2002_2014.pdf}
+%x%x% \end{center}
+%x%x% 
+%x%x% \small
+%x%x% \begin{itemize}
+%x%x% \item MLS water vapor unimportant for OLR applications
+%x%x% \item Mean global \(\Delta\) RH < 0.01\%/year
+%x%x% \end{itemize}
+%x%x% 
+%x%x% \end{frame}
+%x%x% %---------------------------------------------------------------------------------------------
 
 \begin{frame}
 \frametitle{Climate Feedback Estimation from Trend Retrievals}  
@@ -783,14 +691,13 @@ Very simple analysis: BT PDFs for trend analysis (ONE channel)
   {\includegraphics[width=0.5\linewidth]{./Figs17/pdf_1231_ocean_vs_sst.png}}
   \hspace*{0.2in}
   \subfloat[Time Rate of Change of 1231 \wn PDF vs SST]
-/  {\includegraphics[width=0.5\linewidth]{./Figs17/pdf_rates_1231_ocean_vs_sst_with_hot_lat_delta_lines.png}}
+  {\includegraphics[width=0.5\linewidth]{./Figs17/pdf_rates_1231_ocean_vs_sst_with_hot_lat_delta_lines.png}}
 \end{figure}
 
 Black line at 273.15K.\\
 \vspace{0.1in}Two magenta lines (hard to see two) near 302K indicate the
 change in SST over this 14-year time period.\\
-\vspace{0.1in} Very power diagnostic, will be trivial to do in the AWS cloud
-
+\vspace{0.1in} Very powerful diagnostic \textcolor{red}{No retrievals!}, trivial to do in AWS cloud
 
 \end{frame}
 %---------------------------------------------------------------------
@@ -804,7 +711,7 @@ change in SST over this 14-year time period.\\
 \vspace{-0.1in}
 \footnotesize
 \begin{itemize}
-\item Based on 16-day PDFs of 1231 \wn channel
+\item 16-day PDFs of (SST-BT 1231 \wn) channel : percent counts from 4K to $\infty$
 \item AIRS/MODIS global avg: -0.018/-0.010 \%/year.  Difference smaller than our estimated accuracy.
 \item Provides independent assessment of CF.  Many other permutations of this approach.  Turnaround is hours, not years for new ideas/approaches!
 \end{itemize}
@@ -881,7 +788,7 @@ Example of \emph{very} quick processing of AIRS full mission data looking for ho
   \item Can ``invert'' convolved AIRS and CriS radiances back to monochromatic
   \item And then re-convolve to a common wavenumber grid, after accounting for radiometric offsets (look at SNOs)
   \item 1679 channels x 12150 observations/granule (6 minutes)
-  \item Can use one RTA to do 40 years of retrievals etc
+  \item RTA by UMBC -- then anyone can do 40 years of retrievals, pdfs etc
   \item Lose some spectral resolution $\rightarrow$ difficulty with trace gases \textcolor{red}{but should be fine for T,WV,surf temp}
 \end{itemize}
 
