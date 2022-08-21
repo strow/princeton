@@ -153,6 +153,7 @@
    \begin{small}
     \begin{itemize}
     \item $\tau_{\nu}$ extremely complicated and contains the spectroscopy
+    \item HITRAN line parameter Uncertainty estimates : $\delta(BT) \le$ 0.1-0.2 K at TOA  
     \item Spectral lineshapes (and continua) dominate uncertainties
     \item Fast Models : need to model this using SRFs; broad weighting functions on top of lines, narrower weighting functions in between lines
     \end{itemize}
@@ -161,17 +162,16 @@
 \end{frame}
 %------------------------------------------------------------------------
 
-\begin{frame}{Use of Radiative Transfer Models}
+\begin{frame}{Operational Retrievals}
 \vspace{-0.1in}
 
 \begin{itemize}
-  \item HITRAN line parameter database released every 4 years
-  \item Uncertainty estimates : $\delta(BT) \le$ 0.1-0.2 K at TOA  
-  \item Use accurate lineshapes eg line mixing in the models
-  \item $\ge 4 um$ particles (ice/water/dust) $\rightarrow$ Scattering is important
+  %\item Uncertainty estimates : $\delta(BT) \le$ 0.1-0.2 K at TOA  
+  %\item Use accurate lineshapes eg line mixing in the models
+  \item $\ge 4 um$ particles (ice/water/dust) $\rightarrow$ \textcolor{red}{Scattering is important}
   \item \emph{Current Operational Retrievals} use cloud clearing
     \begin{itemize}
-    \item reduces spatial resolution from 15 km to 3 $\times$ 3 or 45 km
+    \item reduces spatial resolution from 15 km to 45 km
     \item ``increases'' spectral noise, and hence retrieval uncertainty
     \item fails when scenes are uniform eg MBL, dust, clear
     \item \textcolor{gray}{AIRS v7 : neural network first guess, 2 sec/FOR, Lots of QA}
